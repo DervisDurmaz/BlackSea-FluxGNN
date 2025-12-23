@@ -42,13 +42,15 @@ if IN_COLAB:
     
     # Path to your project in Google Drive
     PROJECT_PATH = '/content/drive/MyDrive/PINN'
-    DATA_PATH = '/content/drive/MyDrive/PINN/Important Datas'
+    DATA_PATH = '/content/drive/MyDrive/PINN'
+    V6_PATH = '/content/drive/MyDrive/PINN/v6'
     
     # Add to Python path
     sys.path.insert(0, PROJECT_PATH)
     
     print(f"   ✓ Project path: {PROJECT_PATH}")
     print(f"   ✓ Data path: {DATA_PATH}")
+    print(f"   ✓ V6 path: {V6_PATH}")
     
     # ════════════════════════════════════════════════════════════════════════
     # Install dependencies
@@ -74,8 +76,9 @@ if IN_COLAB:
     # Configure environment
     # ════════════════════════════════════════════════════════════════════════
     
-    # Set environment variable for data path
+    # Set environment variables for data paths
     os.environ['BLACKSEA_DATA_DIR'] = DATA_PATH
+    os.environ['BLACKSEA_V6_DIR'] = V6_PATH
     
     # Check GPU
     if torch.cuda.is_available():
@@ -91,7 +94,8 @@ if IN_COLAB:
 else:
     print("Running locally - no Colab setup needed")
     PROJECT_PATH = os.getcwd()
-    DATA_PATH = os.path.join(PROJECT_PATH, 'Important Datas')
+    DATA_PATH = PROJECT_PATH
+    V6_PATH = os.path.join(PROJECT_PATH, 'data', 'v6_outputs')
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

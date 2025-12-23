@@ -130,23 +130,31 @@ BlackSea-FluxGNN/
 
 ### Required Data (not included in repo)
 
-1. **CMEMS Black Sea Reanalysis** (download separately)
-   - Biogeochemistry: `BLKSEA_MULTIYEAR_BGC_007_005`
-   - Physics: `BLKSEA_MULTIYEAR_PHY_007_004`
+Data is hosted on Google Drive and automatically mounted in Colab.
 
-2. **V6 Graph Files** (included in `data/v6_outputs/`)
-   - `valid_indices_v6.npy` - 978 valid ocean nodes
-   - `edge_index_v6.npy` - 12,408 edges
-   - `edge_weight_v6.npy` - Flow-biased weights
+**Google Drive Structure:**
 
-### Data Setup
+```
+/content/drive/MyDrive/PINN/
+├── black_sea_full_1993_2023.nc    # Main CMEMS dataset (820MB)
+└── v6/                             # V6 graph topology outputs
+    ├── valid_indices_v6.npy        # 978 valid ocean nodes
+    ├── edge_index_v6.npy           # 12,408 edges
+    ├── edge_weight_v6.npy          # Flow-biased weights
+    └── ...
+```
+
+**Data Sources:**
+
+- **CMEMS Black Sea Reanalysis** - Biogeochemistry: `BLKSEA_MULTIYEAR_BGC_007_005`, Physics: `BLKSEA_MULTIYEAR_PHY_007_004`
+
+### Data Setup (Google Colab)
 
 ```python
-# Update path in production_integration.py:
-data_dir: str = "/content/drive/MyDrive/Important Datas"  # For Colab
-
-# Or set environment variable:
-export BLACKSEA_DATA_DIR="/path/to/your/data"
+# The notebook automatically mounts Google Drive and uses these paths:
+DATA_DIR = "/content/drive/MyDrive/PINN"
+V6_DIR = "/content/drive/MyDrive/PINN/v6"
+MAIN_DATA = "/content/drive/MyDrive/PINN/black_sea_full_1993_2023.nc"
 ```
 
 ---
